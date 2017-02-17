@@ -24,7 +24,7 @@ public class CheckoutRegister implements LineOfItems {
      * @param log the log that keeps track of cart processing times
      */
     CheckoutRegister(Log log) {
-        
+        this.log = log;
     }
 
     /**

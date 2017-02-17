@@ -46,7 +46,7 @@ public class Store {
      * Returns the removed cart.
      * @return the removed cart
      */
-    public Cart proccessNext() {
+    public Cart processNext() {
         return null;
     }
 

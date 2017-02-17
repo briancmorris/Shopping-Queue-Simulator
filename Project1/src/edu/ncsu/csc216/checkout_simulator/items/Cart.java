@@ -33,7 +33,7 @@ public abstract class Cart {
      * @param checkoutTime the checkout time of the shopping cart
      */
     public Cart(int arrivalTime, int checkoutTime) {
-
+        this.arrivalTime = arrivalTime;
     }
 
     /**
