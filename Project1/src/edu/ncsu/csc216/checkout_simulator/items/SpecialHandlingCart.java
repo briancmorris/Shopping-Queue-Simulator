@@ -2,6 +2,8 @@ package edu.ncsu.csc216.checkout_simulator.items;
 
 import java.awt.Color;
 
+import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
+
 /**
  * The SpecialHandlingCart class is a Cart that is constructed with
  * elements unique to a SpecialHandlingCart such as: its color,
@@ -24,8 +26,8 @@ public class SpecialHandlingCart extends Cart {
     }
 
     /**
-     * The getInLine method chooses the appropriate queue for a
-     * SpecialHandlingCart to enter.
+     * The getInLine() method adds a SpecialHandlingCart to the back of the line for their chosen
+     * CheckoutRegister.
      * @param registers an array of the checkout registers in a store
      */
     @Override

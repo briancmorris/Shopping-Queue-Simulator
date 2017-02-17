@@ -2,6 +2,8 @@ package edu.ncsu.csc216.checkout_simulator.items;
 
 import java.awt.Color;
 
+import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
+
 /**
  * The RegularShoppingCart class is a Cart that is constructed with
  * elements unique to a RegularShoppingCart such as: its color,
@@ -24,12 +26,12 @@ public class RegularShoppingCart extends Cart {
     }
 
     /**
-     * The getInLine method chooses the appropriate queue for a
-     * RegularShoppingCart to enter.
+     * The getInLine() method adds a RegularShoppingCart to the back of the line for their chosen
+     * CheckoutRegister.
      * @param registers an array of the checkout registers in a store
      */
     @Override
-    public void getInLine(ChekoutRegister[] registers) {
+    public void getInLine(CheckoutRegister[] registers) {
         // TODO Auto-generated method stub
 
     }

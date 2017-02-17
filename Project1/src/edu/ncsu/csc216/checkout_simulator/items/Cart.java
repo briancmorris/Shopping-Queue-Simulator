@@ -2,6 +2,8 @@ package edu.ncsu.csc216.checkout_simulator.items;
 
 import java.awt.Color;
 
+import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
+
 /** The cart class maintains information about various aspects
  * of a shopping cart waiting in line such as its arrival time,
  * wait time, process time, the index of the register it will
@@ -13,15 +15,15 @@ public abstract class Cart {
 
     /** The initial index for a checkout register */
     public static final int INITIAL_REGISTER_IDX = 0;
-    /** The arrival time of the shopping cart */
+    /** The time when the cart leaves the shopping area and enters the line in seconds */
     private int arrivalTime;
-    /** The wait time of the shopping cart */
+    /** The number of seconds the cart waits in a checkout register line before processing */
     private int waitTime;
-    /** The process time of the shopping cart */
+    /** The number of seconds required to check out at the register */
     private int processTime;
-    /** The index of the checkout register */
+    /** The index of the register that the cart has selected */
     private int registerIndex;
-    /** Boolean that is true if the shopping cart is waiting in line */
+    /** Boolean that is true if the shopping cart is waiting in line at a register */
     private boolean waitingProcessing;
 
     /**
@@ -82,7 +84,7 @@ public abstract class Cart {
     }
 
     /**
-     * Removes a cart from the waiting line.
+     * Removes a cart from the waiting line and completes its processing.
      */
     public void removeFromWaitingLine() {
 
@@ -98,7 +100,8 @@ public abstract class Cart {
 
     /**
      * Ensures that all subclasses implement a method that places
-     * the shopping cart into a line for checkout.
+     * the shopping cart into the back of the line of a chosen
+     * CheckoutRegister.
      * @param registers an array of checkout registers in the store
      */
     public abstract void getInLine(CheckoutRegister[] registers);

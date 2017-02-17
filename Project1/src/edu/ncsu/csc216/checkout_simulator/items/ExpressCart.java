@@ -2,6 +2,8 @@ package edu.ncsu.csc216.checkout_simulator.items;
 
 import java.awt.Color;
 
+import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
+
 /**
  * The ExpressCart class is a Cart that is constructed with
  * elements unique to an ExpressCart such as: its color,
@@ -24,8 +26,8 @@ public class ExpressCart extends Cart {
 
 
     /**
-     * The getInLine method chooses the appropriate queue for an ExpressCart
-     * to enter.
+     * The getInLine() method adds an ExpressCart to the back of the line for their chosen
+     * CheckoutRegister.
      * @param registers an array of the checkout registers in a store
      */
     @Override
