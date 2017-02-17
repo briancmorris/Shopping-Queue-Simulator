@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.checkout_simulator.queues;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 import edu.ncsu.csc216.checkout_simulator.items.Cart;
 
