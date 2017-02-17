@@ -42,7 +42,7 @@ public class ExpressCart extends Cart {
      */
     @Override
     public Color getColor() {
-        return colour;
+        return null;
     }
 
 }

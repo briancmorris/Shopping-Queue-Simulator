@@ -42,7 +42,7 @@ public class SpecialHandlingCart extends Cart {
      */
     @Override
     public Color getColor() {
-        return colour;
+        return null;
     }
 
 }
