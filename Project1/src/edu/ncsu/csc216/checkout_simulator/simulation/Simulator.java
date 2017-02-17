@@ -25,9 +25,14 @@ public class Simulator {
      * for the simulation and initializes all fields.
      * @param numCarts the number of carts in the simulation
      * @param numRegisters the number of checkout registers in the simulation
+     * @throws IllegalArgumentException if numRegisters <1 or numRegisters
+     *         is < MIN_NUM_REGISTERS or > MAX_NUM_REGISTERS
      */
     public Simulator(int numCarts, int numRegisters) {
-        
+        if (numCarts < 1 || numRegisters < MIN_NUM_REGISTERS ||
+            numRegisters > MAX_NUM_REGISTERS) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
