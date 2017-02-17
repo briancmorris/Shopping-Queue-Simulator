@@ -21,7 +21,7 @@ public class RegularShoppingCart extends Cart {
      * @param arrivalTime the arrival time of the RegularShoppingCart
      * @param checkoutTime the checkout time of the RegularShoppingCart
      */
-    RegularShoppingCart(int arrivalTime, int checkoutTime) {
+    public RegularShoppingCart(int arrivalTime, int checkoutTime) {
         super(arrivalTime, checkoutTime);
     }
 

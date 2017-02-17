@@ -21,7 +21,7 @@ public class SpecialHandlingCart extends Cart {
      * @param arrivalTime the arrival time of the SpecialHandlingCart
      * @param checkoutTime the checkout time of the SpecialHandlingCart
      */
-    SpecialHandlingCart(int arrivalTime, int checkoutTime) {
+    public SpecialHandlingCart(int arrivalTime, int checkoutTime) {
         super(arrivalTime, checkoutTime);
     }
 

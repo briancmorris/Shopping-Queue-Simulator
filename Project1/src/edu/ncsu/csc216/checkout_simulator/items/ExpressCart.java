@@ -20,7 +20,7 @@ public class ExpressCart extends Cart {
      * @param arrivalTime the arrival time of the ExpressCart
      * @param checkoutTime the checkout time of the ExpressCart
      */
-    ExpressCart(int arrivalTime, int checkoutTime) {
+    public ExpressCart(int arrivalTime, int checkoutTime) {
         super(arrivalTime, checkoutTime);
     }
 
