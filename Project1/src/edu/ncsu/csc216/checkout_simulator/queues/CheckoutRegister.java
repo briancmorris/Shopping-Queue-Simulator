@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.checkout_simulator.queues;
 
 import edu.ncsu.csc216.checkout_simulator.items.Cart;
+import edu.ncsu.csc216.checkout_simulator.simulation.Log;
 
 /**
  * The CheckOutRegister class maintains information about a checkout register

@@ -41,7 +41,7 @@ public abstract class Cart {
      * @return the arrival time of the shopping cart
      */
     public int getArrivalTime() {
-        return arrivalTime;
+        return 0;
     }
 
     /**
@@ -49,7 +49,7 @@ public abstract class Cart {
      * @return the wait time of the shopping cart
      */
     public int getWaitTime() {
-        return waitTime;
+        return 0;
     }
 
     /**
@@ -64,7 +64,7 @@ public abstract class Cart {
      * @return the process time of the shopping cart
      */
     public int getProcessTime() {
-        return processTime;
+        return 0;
     }
 
     /**
@@ -72,7 +72,7 @@ public abstract class Cart {
      * @return the index of the checkout register
      */
     public int getRegisterIndex() {
-        return registerIndex;
+        return 0;
     }
 
     /**
@@ -80,7 +80,7 @@ public abstract class Cart {
      * @return true if the shopping cart is in line for checkout
      */
     public boolean isWaitingInRegisterLine() {
-        return waitingProcessing;
+        return false;
     }
 
     /**
