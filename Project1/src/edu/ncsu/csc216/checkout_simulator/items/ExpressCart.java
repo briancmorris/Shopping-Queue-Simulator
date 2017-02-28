@@ -33,7 +33,11 @@ public class ExpressCart extends Cart {
     @Override
     public void getInLine(CheckoutRegister[] registers) {
         // TODO Auto-generated method stub
-
+//        for (int i = 0; i < registers.length; i++) {
+//            if (registers[i].timeWhenAvailable > 0) {
+//                
+//            }
+//        }
     }
 
     /**
@@ -42,7 +46,7 @@ public class ExpressCart extends Cart {
      */
     @Override
     public Color getColor() {
-        return null;
+        return colour;
     }
 
 }

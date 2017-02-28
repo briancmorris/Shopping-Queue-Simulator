@@ -9,51 +9,55 @@ import edu.ncsu.csc216.checkout_simulator.items.Cart;
  */
 public class Log {
 
-    /** The number of carts that have checked out and left the simulation */
+    /** The number of carts that have checked out */
     private int numCompleted;
-    /** The sum of all wait times logged by carts that have checked out so far */
+    /** The sum of the wait times of all carts */
     private int totalWaitTime;
-    /** The sume of all times that carts took to actually check out at registers. */
+    /** The sum of the processing times of all carts */
     private int totalProcessTime;
-    
+
     /**
-     * Constructs a log with values for all fields.
+     * Constructs a Log with values for all fields.
      */
     public Log() {
-        
+        this.numCompleted = 0;
+        this.totalWaitTime = 0;
+        this.totalProcessTime = 0;
     }
 
     /**
-     * Returns the number of carts that have checked out and left the simulation.
-     * @return the number of carts that have checked out and left the simulation
+     * Returns the number of carts that have checked out.
+     * @return the number of carts that have checked out
      */
     public int getNumCompleted() {
-        return 0;
+        return numCompleted;
     }
 
     /**
-     * Updates the data members of log using the information from the provided
-     * cart.
-     * @param cart the cart used to update the log information
+     * Updates totalWaitTime and totalProcessTime with the wait time and process time
+     * of the provided cart.
+     * @param cart the cart used to update the Log
      */
     public void logCart(Cart cart) {
-        
+        this.totalWaitTime += cart.getWaitTime();
+        this.totalProcessTime += cart.getProcessTime();
     }
+
     /**
      * Calculates and returns the average wait time of all shopping carts in
      * the simulation.
      * @return the average wait time of all shopping carts in the simulation
      */
     public double averageWaitTime() {
-        return 0;
+        return (1.0 * totalWaitTime) / numCompleted;
     }
-    
+
     /**
      * Calculates and returns the average processing time of all shopping carts
      * in the simulation.
      * @return the average processing time of all shopping carts in the simulation
      */
     public double averageProcessTime() {
-        return 0;
+        return (1.0 * totalProcessTime) / numCompleted;
     }
 }

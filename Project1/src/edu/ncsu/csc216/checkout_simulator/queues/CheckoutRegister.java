@@ -15,7 +15,7 @@ public class CheckoutRegister implements LineOfItems {
     private ShoppingCartQueue line;
     /** The cart at the front of the line logs its information here during its actual checkout */
     private Log log;
-    /** The next time when this register is available */
+    /** The next time when this register will be clear of all carts */
     private int timeWhenAvailable;
 
     /**
@@ -24,6 +24,9 @@ public class CheckoutRegister implements LineOfItems {
      * @param log the log that keeps track of cart processing times
      */
     public CheckoutRegister(Log log) {
+        this.line = new ShoppingCartQueue();
+        this.log = log;
+        this.timeWhenAvailable = 0;
     }
 
     /**
@@ -32,16 +35,23 @@ public class CheckoutRegister implements LineOfItems {
      * @param cart the cart to be added to the end of the line
      */
     public void addCartToLine(Cart cart) {
-        
+        if(line.isEmpty()) {
+            timeWhenAvailable = cart.getArrivalTime() + cart.getProcessTime();
+            cart.setWaitTime(0);
+        } else {
+            cart.setWaitTime(this.timeWhenAvailable - cart.getArrivalTime());
+            timeWhenAvailable += cart.getWaitTime() + cart.getProcessTime();
+        }
+        line.add(cart);
     }
+
     /**
-     * Returns true if the shopping queue is not empty.
-     * @return true if the shopping queue is not empty
+     * Returns true if the line is not empty.
+     * @return true if the line is not empty
      */
     @Override
     public boolean hasNext() {
-        // TODO Auto-generated method stub
-        return false;
+        return !line.isEmpty();
     }
 
     /**
@@ -51,8 +61,10 @@ public class CheckoutRegister implements LineOfItems {
      */
     @Override
     public Cart processNext() {
-        // TODO Auto-generated method stub
-        return null;
+        Cart c = line.remove();
+        c.removeFromWaitingLine();
+        log.logCart(c);
+        return c;
     }
 
     /**
@@ -62,8 +74,11 @@ public class CheckoutRegister implements LineOfItems {
      */
     @Override
     public int departTimeNext() {
-        // TODO Auto-generated method stub
-        return 0;
+        if (line.isEmpty()) {
+            return Integer.MAX_VALUE;
+        }
+        Cart c = line.front();
+        return (c.getArrivalTime() + c.getWaitTime() + c.getProcessTime());
     }
 
     /**
@@ -72,8 +87,7 @@ public class CheckoutRegister implements LineOfItems {
      */
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return line.size();
     }
 
 }

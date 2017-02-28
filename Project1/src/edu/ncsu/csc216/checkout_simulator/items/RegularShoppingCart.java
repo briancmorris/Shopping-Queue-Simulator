@@ -33,6 +33,9 @@ public class RegularShoppingCart extends Cart {
     @Override
     public void getInLine(CheckoutRegister[] registers) {
         // TODO Auto-generated method stub
+        for (int i = 0; i < registers.length; i++) {
+            
+        }
 
     }
 

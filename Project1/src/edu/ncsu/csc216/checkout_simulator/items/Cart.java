@@ -4,12 +4,12 @@ import java.awt.Color;
 
 import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 
-/** The cart class maintains information about various aspects
- * of a shopping cart waiting in line such as its arrival time,
- * wait time, process time, the index of the register it will
- * wait in line at, and if it's waiting in line.
+/**
+ * The Cart class maintains information about various aspects
+ * of a shopping cart waiting in line. This includes its arrival time,
+ * wait time, process time, the index of the register it lines up at,
+ * and if it's waiting in line.
  * @author Brian Morris
- *
  */
 public abstract class Cart {
 
@@ -38,6 +38,8 @@ public abstract class Cart {
         if(arrivalTime < 0 || processTime < 0) {
             throw new IllegalArgumentException();
         }
+        this.arrivalTime = arrivalTime;
+        this.processTime = processTime;
     }
 
     /**
@@ -45,7 +47,7 @@ public abstract class Cart {
      * @return the arrival time of the shopping cart
      */
     public int getArrivalTime() {
-        return 0;
+        return arrivalTime;
     }
 
     /**
@@ -53,7 +55,7 @@ public abstract class Cart {
      * @return the wait time of the shopping cart
      */
     public int getWaitTime() {
-        return 0;
+        return waitTime;
     }
 
     /**
@@ -61,6 +63,7 @@ public abstract class Cart {
      * @param waitTime the wait time of the shopping cart
      */
     public void setWaitTime(int waitTime) {
+        this.waitTime = waitTime;
     }
 
     /**
@@ -68,7 +71,7 @@ public abstract class Cart {
      * @return the process time of the shopping cart
      */
     public int getProcessTime() {
-        return 0;
+        return processTime;
     }
 
     /**
@@ -76,7 +79,7 @@ public abstract class Cart {
      * @return the index of the checkout register
      */
     public int getRegisterIndex() {
-        return 0;
+        return registerIndex;
     }
 
     /**
@@ -84,14 +87,15 @@ public abstract class Cart {
      * @return true if the shopping cart is in line for checkout
      */
     public boolean isWaitingInRegisterLine() {
-        return false;
+        return waitingProcessing;
     }
 
     /**
      * Removes a cart from the waiting line and completes its processing.
      */
     public void removeFromWaitingLine() {
-
+//        setRegisterIndex(-1);
+//        this.waitingProcessing = false;
     }
 
     /**
@@ -99,7 +103,7 @@ public abstract class Cart {
      * @param registerIndex the index of the checkout register
      */
     protected void setRegisterIndex(int registerIndex) {
-        //this.registerIndex = registerIndex;
+        this.registerIndex = registerIndex;
     }
 
     /**
