@@ -12,7 +12,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
  */
 public class ExpressCart extends Cart {
     /** The color of an ExpressCart */
-    private static Color colour = Color.green;
+    private static Color colour = Color.GREEN;
 
     /**
      * The ExpressCart constructor creates an ExpressCart
@@ -24,7 +24,6 @@ public class ExpressCart extends Cart {
         super(arrivalTime, checkoutTime);
     }
 
-
     /**
      * The getInLine() method adds an ExpressCart to the back of the line for their chosen
      * CheckoutRegister.
@@ -32,17 +31,21 @@ public class ExpressCart extends Cart {
      */
     @Override
     public void getInLine(CheckoutRegister[] registers) {
-        // TODO Auto-generated method stub
-//        for (int i = 0; i < registers.length; i++) {
-//            if (registers[i].timeWhenAvailable > 0) {
-//                
-//            }
-//        }
+        int minCarts = registers[0].size();
+        int idx = 0;
+        for (int i = 0; i < registers.length; i++) {
+            if (registers[i].size() < minCarts) {
+                minCarts = registers[i].size();
+                idx = i;
+            }
+        }
+        this.setRegisterIndex(idx);
+        registers[idx].addCartToLine(this);
     }
 
     /**
      * The getColor method returns the color of the ExpressCart.
-     * @return colour color of the ExpressCart
+     * @return the color of the ExpressCart
      */
     @Override
     public Color getColor() {

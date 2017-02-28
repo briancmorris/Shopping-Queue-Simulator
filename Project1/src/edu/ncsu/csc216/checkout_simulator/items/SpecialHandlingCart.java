@@ -13,7 +13,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 public class SpecialHandlingCart extends Cart {
 
     /** The color of the SpecialHandlingCart */
-    private static Color colour = Color.red;
+    private static Color colour = Color.RED;
 
     /**
      * The SpecialHandlingCart constructor creates a
@@ -32,17 +32,27 @@ public class SpecialHandlingCart extends Cart {
      */
     @Override
     public void getInLine(CheckoutRegister[] registers) {
-        // TODO Auto-generated method stub
-
+        int numSpecialRegisters = (int) Math.ceil(registers.length * 0.25);
+        int specialRegisterIDX = (registers.length - 1) - numSpecialRegisters;
+        int minCarts = registers[specialRegisterIDX].size();
+        int idx = specialRegisterIDX;
+        for (int i = specialRegisterIDX; i < registers.length; i++) {
+            if (registers[i].size() < minCarts) {
+                minCarts = registers[i].size();
+                idx = i;
+            }
+        }
+        this.setRegisterIndex(idx);
+        registers[idx].addCartToLine(this);
     }
 
     /**
      * The getColor method returns the color of the SpecialHandlingCart.
-     * @return colour color of the SpecialHandlingCart
+     * @return the color of the SpecialHandlingCart
      */
     @Override
     public Color getColor() {
-        return null;
+        return colour;
     }
 
 }

@@ -40,6 +40,7 @@ public abstract class Cart {
         }
         this.arrivalTime = arrivalTime;
         this.processTime = processTime;
+        this.registerIndex = INITIAL_REGISTER_IDX;
     }
 
     /**
@@ -94,8 +95,7 @@ public abstract class Cart {
      * Removes a cart from the waiting line and completes its processing.
      */
     public void removeFromWaitingLine() {
-//        setRegisterIndex(-1);
-//        this.waitingProcessing = false;
+        setRegisterIndex(-1);
     }
 
     /**
@@ -103,7 +103,13 @@ public abstract class Cart {
      * @param registerIndex the index of the checkout register
      */
     protected void setRegisterIndex(int registerIndex) {
+        //TODO
         this.registerIndex = registerIndex;
+        if (registerIndex == -1) {
+            this.waitingProcessing = false;
+        } else {
+            this.waitingProcessing = true;
+        }
     }
 
     /**
@@ -120,4 +126,5 @@ public abstract class Cart {
      * @return the color of the shopping cart
      */
     public abstract Color getColor();
+
 }

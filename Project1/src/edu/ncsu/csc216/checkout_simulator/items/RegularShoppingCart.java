@@ -13,7 +13,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 public class RegularShoppingCart extends Cart {
 
     /** The color of a RegularShoppingCart */
-    private static Color colour = Color.blue;
+    private static Color colour = Color.BLUE;
 
     /**
      * The RegularShoppingCart constructor creates a
@@ -32,20 +32,25 @@ public class RegularShoppingCart extends Cart {
      */
     @Override
     public void getInLine(CheckoutRegister[] registers) {
-        // TODO Auto-generated method stub
-        for (int i = 0; i < registers.length; i++) {
-            
+        int minCarts = registers[1].size();
+        int idx = 1;
+        for (int i = 1; i < registers.length; i++) {
+            if (registers[i].size() < minCarts) {
+                minCarts = registers[i].size();
+                idx = i;
+            }
         }
-
+        this.setRegisterIndex(idx);
+        registers[idx].addCartToLine(this);
     }
 
     /**
      * The getColor method returns the color of the RegularShoppingCart.
-     * @return colour color of the RegularShoppingCart
+     * @return the color of the RegularShoppingCart
      */
     @Override
     public Color getColor() {
-        return null;
+        return colour;
     }
 
 }

@@ -7,7 +7,6 @@ import edu.ncsu.csc216.checkout_simulator.simulation.Log;
  * The CheckOutRegister class maintains information about a checkout register
  * located at a store.
  * @author Brian Morris
- *
  */
 public class CheckoutRegister implements LineOfItems {
 
@@ -30,28 +29,12 @@ public class CheckoutRegister implements LineOfItems {
     }
 
     /**
-     * Adds a cart to the end of the line, updating the cart's waitTime as well as
-     * the time when the line will be clear of all carts currently in line.
-     * @param cart the cart to be added to the end of the line
-     */
-    public void addCartToLine(Cart cart) {
-        if(line.isEmpty()) {
-            timeWhenAvailable = cart.getArrivalTime() + cart.getProcessTime();
-            cart.setWaitTime(0);
-        } else {
-            cart.setWaitTime(this.timeWhenAvailable - cart.getArrivalTime());
-            timeWhenAvailable += cart.getWaitTime() + cart.getProcessTime();
-        }
-        line.add(cart);
-    }
-
-    /**
-     * Returns true if the line is not empty.
-     * @return true if the line is not empty
+     * Returns the number of carts still in line.
+     * @return the number of carts still in line
      */
     @Override
-    public boolean hasNext() {
-        return !line.isEmpty();
+    public int size() {
+        return line.size();
     }
 
     /**
@@ -65,6 +48,15 @@ public class CheckoutRegister implements LineOfItems {
         c.removeFromWaitingLine();
         log.logCart(c);
         return c;
+    }
+
+    /**
+     * Returns true if the line is not empty.
+     * @return true if the line is not empty
+     */
+    @Override
+    public boolean hasNext() {
+        return !line.isEmpty();
     }
 
     /**
@@ -82,12 +74,20 @@ public class CheckoutRegister implements LineOfItems {
     }
 
     /**
-     * Returns the number of carts still in line.
-     * @return the number of carts still in line
+     * Adds a cart to the end of the line, updating the cart's waitTime as well as
+     * the time when the line will be clear of all carts currently in line.
+     * @param cart the cart to be added to the end of the line
      */
-    @Override
-    public int size() {
-        return line.size();
+    public void addCartToLine(Cart cart) {
+        if(line.isEmpty()) {
+            //timeWhenAvailable = cart.getArrivalTime() + cart.getProcessTime();
+            cart.setWaitTime(0);
+        } else {
+            cart.setWaitTime(this.timeWhenAvailable - cart.getArrivalTime());
+            //timeWhenAvailable += cart.getWaitTime() + cart.getProcessTime();
+        }
+        timeWhenAvailable = cart.getArrivalTime() + cart.getWaitTime() + cart.getProcessTime();
+        line.add(cart);
     }
 
 }
