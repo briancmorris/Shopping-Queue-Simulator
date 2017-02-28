@@ -39,8 +39,9 @@ public class Log {
      * @param cart the cart used to update the Log
      */
     public void logCart(Cart cart) {
-        this.totalWaitTime += cart.getWaitTime();
-        this.totalProcessTime += cart.getProcessTime();
+        totalWaitTime += cart.getWaitTime();
+        totalProcessTime += cart.getProcessTime();
+        numCompleted++;
     }
 
     /**

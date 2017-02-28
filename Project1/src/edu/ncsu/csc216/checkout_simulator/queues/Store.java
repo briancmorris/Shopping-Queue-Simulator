@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.checkout_simulator.queues;
 
 import edu.ncsu.csc216.checkout_simulator.items.Cart;
+import edu.ncsu.csc216.checkout_simulator.items.CartFactory;
 
 /**
  * The Store class maintains information about a Store object
@@ -9,7 +10,7 @@ import edu.ncsu.csc216.checkout_simulator.items.Cart;
  * @author Brian Morris
  *
  */
-public class Store {
+public class Store implements LineOfItems {
 
     /** The queue of carts still shopping */
     private ShoppingCartQueue shopping;
@@ -22,7 +23,11 @@ public class Store {
      * @param registers an array of all the checkout registers in the Store
      */
     public Store(int numberOfCarts, CheckoutRegister[] registers) {
-        
+        //TODO
+        for (int i = 0; i < numberOfCarts; i++) {
+            shopping.add(CartFactory.createCart());
+        }
+        this.register = registers;
     }
 
     /**
@@ -30,7 +35,7 @@ public class Store {
      * @return the number of carts still in the shopping queue
      */
     public int size() {
-        return 0;
+        return shopping.size();
     }
 
     /**
@@ -38,7 +43,7 @@ public class Store {
      * @return true if the shopping queue is not empty
      */
     public boolean hasNext() {
-        return false;
+        return !shopping.isEmpty();
     }
 
     /**
@@ -47,7 +52,9 @@ public class Store {
      * @return the removed cart
      */
     public Cart processNext() {
-        return null;
+        Cart c = shopping.remove();
+        c.getInLine(register);
+        return c;
     }
 
     /**
@@ -56,6 +63,10 @@ public class Store {
      * @return the time when the cart at the front of the shopping queue will depart that queue
      */
     public int departTimeNext() {
+        //TODO
+        if (shopping.isEmpty()) {
+            return Integer.MAX_VALUE;
+        }
         return 0;
     }
 }
