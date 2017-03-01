@@ -50,7 +50,11 @@ public class Log {
      * @return the average wait time of all shopping carts in the simulation
      */
     public double averageWaitTime() {
-        return (1.0 * totalWaitTime) / numCompleted;
+        if (numCompleted != 0) {
+            return (1.0 * totalWaitTime) / numCompleted;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -59,6 +63,10 @@ public class Log {
      * @return the average processing time of all shopping carts in the simulation
      */
     public double averageProcessTime() {
-        return (1.0 * totalProcessTime) / numCompleted;
+        if (numCompleted != 0) {
+            return (1.0 * totalProcessTime) / numCompleted;
+        } else {
+            return 0;
+        }
     }
 }
