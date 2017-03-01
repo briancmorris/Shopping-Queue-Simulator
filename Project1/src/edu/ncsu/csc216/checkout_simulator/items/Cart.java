@@ -14,7 +14,7 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 public abstract class Cart {
 
     /** The initial index for a checkout register */
-    public static final int INITIAL_REGISTER_IDX = 0;
+    public static final int INITIAL_REGISTER_IDX = -1;
     /** The time when the cart leaves the shopping area and enters the line in seconds */
     private int arrivalTime;
     /** The number of seconds the cart waits in a checkout register line before processing */
@@ -95,7 +95,7 @@ public abstract class Cart {
      * Removes a cart from the waiting line and completes its processing.
      */
     public void removeFromWaitingLine() {
-        setRegisterIndex(-1);
+        this.waitingProcessing = false;
     }
 
     /**
@@ -104,11 +104,7 @@ public abstract class Cart {
      */
     protected void setRegisterIndex(int registerIndex) {
         this.registerIndex = registerIndex;
-        if (registerIndex == -1) {
-            this.waitingProcessing = false;
-        } else {
-            this.waitingProcessing = true;
-        }
+        this.waitingProcessing = true;
     }
 
     /**

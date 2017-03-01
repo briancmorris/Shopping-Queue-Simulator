@@ -58,8 +58,6 @@ public class SpecialHandlingCartTest {
         test.setRegisterIndex(3);
         assertEquals(3, test.getRegisterIndex());
         assertTrue(test.isWaitingInRegisterLine());
-        test.setRegisterIndex(-1);
-        assertFalse(test.isWaitingInRegisterLine());
     }
 
     /**

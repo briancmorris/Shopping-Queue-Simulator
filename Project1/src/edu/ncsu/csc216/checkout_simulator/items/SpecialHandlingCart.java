@@ -33,7 +33,7 @@ public class SpecialHandlingCart extends Cart {
     @Override
     public void getInLine(CheckoutRegister[] registers) {
         int numSpecialRegisters = (int) Math.ceil(registers.length * 0.25);
-        int specialRegisterIDX = (registers.length - 1) - numSpecialRegisters;
+        int specialRegisterIDX = registers.length - numSpecialRegisters;
         int minCarts = registers[specialRegisterIDX].size();
         int idx = specialRegisterIDX;
         for (int i = specialRegisterIDX; i < registers.length; i++) {
