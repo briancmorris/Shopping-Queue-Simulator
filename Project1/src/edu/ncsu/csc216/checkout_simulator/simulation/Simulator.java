@@ -125,7 +125,11 @@ public class Simulator {
      * @return the index of the CheckoutRegister selected by the current Cart
      */
     public int getCurrentIndex() {
-        return currentCart.getRegisterIndex();
+        if (currentCart == null) {
+            return Cart.INITIAL_REGISTER_IDX;
+        } else {
+            return currentCart.getRegisterIndex();
+        }
     }
 
     /**
