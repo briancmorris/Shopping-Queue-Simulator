@@ -23,7 +23,6 @@ public class Store implements LineOfItems {
      * @param registers an array of all the checkout registers in the Store
      */
     public Store(int numberOfCarts, CheckoutRegister[] registers) {
-        //TODO
         for (int i = 0; i < numberOfCarts; i++) {
             shopping.add(CartFactory.createCart());
         }
@@ -63,10 +62,9 @@ public class Store implements LineOfItems {
      * @return the time when the cart at the front of the shopping queue will depart that queue
      */
     public int departTimeNext() {
-        //TODO
         if (shopping.isEmpty()) {
             return Integer.MAX_VALUE;
         }
-        return 0;
+        return shopping.front().getArrivalTime();
     }
 }
