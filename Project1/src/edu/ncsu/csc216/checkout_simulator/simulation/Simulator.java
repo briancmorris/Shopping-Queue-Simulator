@@ -67,7 +67,7 @@ public class Simulator {
      * @return the array of colors assigned to the different Cart types
      */
     public static Color[] simulationColors() {
-        Color[] simulationColors = {Color.GREEN, Color.BLUE, Color.GREEN};
+        Color[] simulationColors = {Color.GREEN, Color.BLUE, Color.RED};
         return simulationColors;
     }
 
@@ -76,7 +76,8 @@ public class Simulator {
      * @return the array of strings describing the different Cart types
      */
     public static String[] simulationLabels() {
-        return null;
+        String[] simulationLabels = {"ExpressCart", "RegularShoppingCart", "SpecialHandlingCart"};
+        return simulationLabels;
     }
 
     /**
