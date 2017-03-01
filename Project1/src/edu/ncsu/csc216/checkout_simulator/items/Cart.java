@@ -103,7 +103,6 @@ public abstract class Cart {
      * @param registerIndex the index of the checkout register
      */
     protected void setRegisterIndex(int registerIndex) {
-        //TODO
         this.registerIndex = registerIndex;
         if (registerIndex == -1) {
             this.waitingProcessing = false;
