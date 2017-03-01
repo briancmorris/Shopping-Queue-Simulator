@@ -84,9 +84,10 @@ public class SimulatorTest {
             assertEquals(i, test.getStepsTaken());
             if (i < 100) {
                 assertTrue(test.moreSteps());
-            } else {
-                // assertFalse(test.moreSteps());
-            }
+            } 
+//            else {
+//                 assertFalse(test.moreSteps());
+//            }
         }
         assertTrue(test.averageProcessTime() != 0);
         assertTrue(test.averageWaitTime() != 0);
