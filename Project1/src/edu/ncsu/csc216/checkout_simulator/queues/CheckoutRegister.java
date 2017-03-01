@@ -80,11 +80,9 @@ public class CheckoutRegister implements LineOfItems {
      */
     public void addCartToLine(Cart cart) {
         if(line.isEmpty()) {
-            //timeWhenAvailable = cart.getArrivalTime() + cart.getProcessTime();
             cart.setWaitTime(0);
         } else {
             cart.setWaitTime(this.timeWhenAvailable - cart.getArrivalTime());
-            //timeWhenAvailable += cart.getWaitTime() + cart.getProcessTime();
         }
         timeWhenAvailable = cart.getArrivalTime() + cart.getWaitTime() + cart.getProcessTime();
         line.add(cart);
