@@ -104,8 +104,8 @@ public class Simulator {
     }
 
     /**
-     * Returns the total number of steps taken in the simulation.
-     * @return the total number of steps taken in the simulation
+     * Returns the total number of steps in the simulation.
+     * @return the total number of steps in the simulation
      */
     public int totalNumberOfSteps() {
         return totalNumberOfSteps;

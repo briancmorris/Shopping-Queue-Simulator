@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc216.checkout_simulator.items.Cart;
 import edu.ncsu.csc216.checkout_simulator.simulation.Log;
 
 /**
@@ -14,7 +15,7 @@ import edu.ncsu.csc216.checkout_simulator.simulation.Log;
 public class StoreTest {
 
     /**
-     * Tests the Store class.
+     * Tests all Store class methods.
      */
     @Test
     public void storeTest() {
@@ -35,7 +36,9 @@ public class StoreTest {
         assertTrue(test.departTimeNext() >= 0);
         // Process all 500 carts.
         for (int i = 0; i < 500; i++) {
-            assertTrue(test.processNext().isWaitingInRegisterLine());
+            Cart c = test.processNext();
+            assertTrue(c.isWaitingInRegisterLine());
+            assertTrue(c.getRegisterIndex() != -1);
         }
         // hasNext() false
         assertFalse(test.hasNext());
