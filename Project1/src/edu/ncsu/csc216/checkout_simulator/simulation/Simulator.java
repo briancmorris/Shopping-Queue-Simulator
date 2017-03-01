@@ -137,7 +137,11 @@ public class Simulator {
      * @return the color of currentCart or null if currentCart is null
      */
     public Color getCurrentCartColor() {
-        return currentCart.getColor();
+        if (currentCart == null) {
+            return null;
+        } else {
+            return currentCart.getColor();
+        }
     }
 
     /**
@@ -147,7 +151,11 @@ public class Simulator {
      *         and left the register line.
      */
     public boolean itemLeftSimulation() {
-        return !currentCart.isWaitingInRegisterLine();
+        if (currentCart == null) {
+            return false;
+        } else {
+            return !currentCart.isWaitingInRegisterLine();
+        }
     }
 
     /**
