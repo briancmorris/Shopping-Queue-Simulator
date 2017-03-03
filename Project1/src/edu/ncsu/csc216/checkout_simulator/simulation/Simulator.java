@@ -39,13 +39,14 @@ public class Simulator {
      * simulation environment for a Store with values for all fields.
      * @param numberOfCarts the number of carts in the simulation
      * @param numberOfRegisters the number of checkout registers in the simulation
-     * @throws IllegalArgumentException if numRegisters < 1 or numRegisters
-     *         is < MIN_NUM_REGISTERS or > MAX_NUM_REGISTERS
+     * @throws IllegalArgumentException if numRegisters less than 1 or numRegisters
+     *         is less than MIN_NUM_REGISTERS or greater than MAX_NUM_REGISTERS
      */
     public Simulator(int numberOfRegisters, int numberOfCarts) {
         if (numberOfCarts < 1) {
             throw new IllegalArgumentException("There must be at least one shopping cart in the simulation.");
-        } else if (numberOfRegisters < MIN_NUM_REGISTERS || numberOfRegisters > MAX_NUM_REGISTERS) {
+        }
+        if (numberOfRegisters < MIN_NUM_REGISTERS || numberOfRegisters > MAX_NUM_REGISTERS) {
             throw new IllegalArgumentException("Number of registers must be between 3 and 12 inclusive.");
         }
         this.numCarts = numberOfCarts;

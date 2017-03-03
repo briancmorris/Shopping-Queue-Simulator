@@ -24,13 +24,14 @@ public class CheckoutRegisterTest {
     }
     
     /**
-     * Tests methods associated with adding and removing a Cart
+     * Tests all methods associated with adding and removing a Cart
      * from a CheckoutRegister line.
      */
     @Test
     public void testAddAndRemoveCartToLine() {
         Log log = new Log();
         CheckoutRegister test = new CheckoutRegister(log);
+        assertEquals(0, test.size());
         ExpressCart cart1 = new ExpressCart(10, 10);
         // Test adding.
         test.addCartToLine(cart1);

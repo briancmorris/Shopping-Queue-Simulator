@@ -79,12 +79,14 @@ public class SimulatorTest {
     public void testStepMethods() {
         Simulator test = new Simulator(5, 100);
         assertEquals(200, test.totalNumberOfSteps());
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 200; i++) {
             test.step();
             assertEquals(i, test.getStepsTaken());
-            if (i < 100) {
+            if (i < 200) {
                 assertTrue(test.moreSteps());
-            } 
+            } else {
+                assertFalse(test.moreSteps());
+            }
 //            else {
 //                 assertFalse(test.moreSteps());
 //            }
@@ -101,13 +103,21 @@ public class SimulatorTest {
     public void testCartMethods() {
         Simulator test = new Simulator(5, 100);
         assertEquals(200, test.totalNumberOfSteps());
-        for (int i = 1; i <= 100; i++) {
+        // Test null currentCart
+        assertEquals(-1, test.getCurrentIndex());
+        assertFalse(test.itemLeftSimulation());
+        assertTrue(test.getCurrentCartColor() == null);
+        // Step through simulation and check cart methods.
+        for (int i = 1; i <= 200; i++) {
             test.step();
-            //assertFalse(test.itemLeftSimulation());
-            assertTrue(test.getCurrentIndex() != -1);
-            assertTrue(test.getCurrentCartColor().equals(Color.GREEN)
-                       || test.getCurrentCartColor().equals(Color.BLUE)
-                       || test.getCurrentCartColor().equals(Color.RED));
+            if (!test.itemLeftSimulation()) {
+                assertTrue(test.getCurrentIndex() != -1);
+                assertTrue(test.getCurrentCartColor().equals(Color.GREEN)
+                           || test.getCurrentCartColor().equals(Color.BLUE)
+                           || test.getCurrentCartColor().equals(Color.RED));
+            } else {
+                assertTrue(test.getCurrentIndex() != -1);
+            }
         }
     }
 }

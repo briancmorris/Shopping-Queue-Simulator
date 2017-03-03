@@ -29,10 +29,10 @@ public abstract class Cart {
     /**
      * The Cart constructor initializes a Cart object with values
      * for all fields. Throws an IllegalArgumentException if
-     * arrivalTime or processTime are < 0.
+     * arrivalTime or processTime are less than 0.
      * @param arrivalTime the arrival time of the shopping cart in seconds
      * @param processTime the checkout time of the shopping cart in seconds
-     * @throws IllegalArgumentException if arrivalTime or processTime are < 0
+     * @throws IllegalArgumentException if arrivalTime or processTime are less than 0
      */
     public Cart(int arrivalTime, int processTime) {
         if(arrivalTime < 0 || processTime < 0) {
