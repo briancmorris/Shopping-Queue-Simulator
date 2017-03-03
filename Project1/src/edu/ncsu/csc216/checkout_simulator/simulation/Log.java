@@ -9,11 +9,11 @@ import edu.ncsu.csc216.checkout_simulator.items.Cart;
  */
 public class Log {
 
-    /** The number of carts that have checked out */
+    /** The number of carts that have completed checkout */
     private int numCompleted;
-    /** The sum of the wait times of all carts */
+    /** The sum of the wait times of all processed carts in seconds */
     private int totalWaitTime;
-    /** The sum of the processing times of all carts */
+    /** The sum of the processing times of all processed carts in seconds */
     private int totalProcessTime;
 
     /**
@@ -26,8 +26,8 @@ public class Log {
     }
 
     /**
-     * Returns the number of carts that have checked out.
-     * @return the number of carts that have checked out
+     * Returns the number of carts that have completed checkout.
+     * @return the number of carts that have completed checkout
      */
     public int getNumCompleted() {
         return numCompleted;
@@ -69,4 +69,5 @@ public class Log {
             return 0;
         }
     }
+
 }

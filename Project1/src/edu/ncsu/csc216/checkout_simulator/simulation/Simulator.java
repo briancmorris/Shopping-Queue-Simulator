@@ -25,7 +25,7 @@ public class Simulator {
     private int stepsTaken;
     /** The total number of steps required in the simulation */
     private int totalNumberOfSteps;
-    /** The Cart being handled currently by the simulator */
+    /** The Cart being handled currently by the Simulator */
     private Cart currentCart;
     /** The Log that maintains all information about the simulation */
     private Log myLog;
@@ -35,8 +35,8 @@ public class Simulator {
     private EventCalendar theCalendar;
 
     /**
-     * The Simulator constructor creates a Store with the given parameters
-     * for the simulation and initializes all fields.
+     * The Simulator constructor constructs the shopping cart
+     * simulation environment for a Store with values for all fields.
      * @param numberOfCarts the number of carts in the simulation
      * @param numberOfRegisters the number of checkout registers in the simulation
      * @throws IllegalArgumentException if numRegisters < 1 or numRegisters
@@ -121,8 +121,10 @@ public class Simulator {
     }
 
     /**
-     * Returns the index of the CheckoutRegister selected by the current Cart.
-     * @return the index of the CheckoutRegister selected by the current Cart
+     * Returns the index of the CheckoutRegister selected by the current Cart. Returns
+     * -1 if currentCart is null.
+     * @return the index of the CheckoutRegister selected by the current Cart, returns -1
+     *         if currentCart is null
      */
     public int getCurrentIndex() {
         if (currentCart == null) {
@@ -146,9 +148,11 @@ public class Simulator {
 
     /**
      * Returns true if the most recently handled cart completed checking out
-     * and left the register line.
+     * and left the register line, false otherwise. If currentCart is null, it
+     * returns false.
      * @return true if the most recently handled cart completed checking out
-     *         and left the register line.
+     *         and left the register line, false otherwise. If currentCart is null,
+     *         returns false.
      */
     public boolean itemLeftSimulation() {
         if (currentCart == null) {

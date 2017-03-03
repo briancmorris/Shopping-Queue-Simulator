@@ -5,10 +5,10 @@ import java.awt.Color;
 import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 
 /**
- * The Cart class maintains information about various aspects
- * of a shopping cart waiting in line. This includes its arrival time,
- * wait time, process time, the index of the register it lines up at,
- * and if it's waiting in line.
+ * The Cart class maintains information about a shopping cart that is being
+ * processed by the simulation. This includes its arrival time,
+ * wait time, process time, the index of the line it chooses, and if it's waiting
+ * in line.
  * @author Brian Morris
  */
 public abstract class Cart {
@@ -17,7 +17,7 @@ public abstract class Cart {
     public static final int INITIAL_REGISTER_IDX = -1;
     /** The time when the cart leaves the shopping area and enters the line in seconds */
     private int arrivalTime;
-    /** The number of seconds the cart waits in a checkout register line before processing */
+    /** The number of seconds the cart waits in line before processing */
     private int waitTime;
     /** The number of seconds required to check out at the register */
     private int processTime;
@@ -30,8 +30,8 @@ public abstract class Cart {
      * The Cart constructor initializes a Cart object with values
      * for all fields. Throws an IllegalArgumentException if
      * arrivalTime or processTime are < 0.
-     * @param arrivalTime the arrival time of the shopping cart
-     * @param processTime the checkout time of the shopping cart
+     * @param arrivalTime the arrival time of the shopping cart in seconds
+     * @param processTime the checkout time of the shopping cart in seconds
      * @throws IllegalArgumentException if arrivalTime or processTime are < 0
      */
     public Cart(int arrivalTime, int processTime) {
@@ -109,9 +109,8 @@ public abstract class Cart {
 
     /**
      * Ensures that all subclasses implement a method that places
-     * the shopping cart into the back of the line of a chosen
-     * CheckoutRegister.
-     * @param registers an array of checkout registers in the store
+     * the shopping cart into the appropriate line.
+     * @param registers an array of checkout registers in the Store
      */
     public abstract void getInLine(CheckoutRegister[] registers);
 

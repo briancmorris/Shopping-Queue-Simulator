@@ -7,7 +7,8 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 /**
  * The RegularShoppingCart class is a Cart that is constructed with
  * elements unique to a RegularShoppingCart such as: its color,
- * arrival time, and checkout time.
+ * arrival time, and checkout time. A RegularShoppingCart always chooses
+ * the shortest line, so long as it's not an ExpressCart line.
  * @author Brian Morris
  */
 public class RegularShoppingCart extends Cart {
@@ -18,16 +19,16 @@ public class RegularShoppingCart extends Cart {
     /**
      * The RegularShoppingCart constructor creates a
      * RegularShoppingCart with values for all fields.
-     * @param arrivalTime the arrival time of the RegularShoppingCart
-     * @param checkoutTime the checkout time of the RegularShoppingCart
+     * @param arrivalTime the arrival time of the RegularShoppingCart in seconds
+     * @param checkoutTime the checkout time of the RegularShoppingCart in seconds
      */
     public RegularShoppingCart(int arrivalTime, int checkoutTime) {
         super(arrivalTime, checkoutTime);
     }
 
     /**
-     * The getInLine() method adds a RegularShoppingCart to the back of the line for their chosen
-     * CheckoutRegister.
+     * The getInLine() method adds a RegularShoppingCart to the back of the shortest line,
+     * as long as it isn't an ExpressCart line.
      * @param registers an array of the checkout registers in a store
      */
     @Override
@@ -45,7 +46,7 @@ public class RegularShoppingCart extends Cart {
     }
 
     /**
-     * The getColor method returns the color of the RegularShoppingCart.
+     * Returns the color of the RegularShoppingCart.
      * @return the color of the RegularShoppingCart
      */
     @Override

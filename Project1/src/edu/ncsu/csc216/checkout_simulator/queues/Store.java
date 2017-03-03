@@ -4,23 +4,23 @@ import edu.ncsu.csc216.checkout_simulator.items.Cart;
 import edu.ncsu.csc216.checkout_simulator.items.CartFactory;
 
 /**
- * The Store class maintains information about a Store object
- * including the number of carts found in the simulation and the
- * registers found in the Store.
+ * The Store class maintains information about a Store including
+ * the number of carts found in the simulation and the registers
+ * found in the Store.
  * @author Brian Morris
  *
  */
 public class Store implements LineOfItems {
 
-    /** The queue of carts still shopping */
+    /** The ShoppingCartQueue of carts still shopping */
     private ShoppingCartQueue shopping;
     /** An array of CheckoutRegisters found in the Store */
     private CheckoutRegister[] register;
-    
+
     /**
      * Constructs a Store with values for all fields.
      * @param numberOfCarts the number of carts in the simulation
-     * @param registers an array of all the checkout registers in the Store
+     * @param registers an array of all CheckoutRegisters in the Store
      */
     public Store(int numberOfCarts, CheckoutRegister[] registers) {
         shopping = new ShoppingCartQueue();
@@ -60,7 +60,8 @@ public class Store implements LineOfItems {
     /**
      * Returns when the cart at the front of the shopping queue will depart that queue.
      * If the shopping queue is empty, it returns Integer.MAX_VALUE.
-     * @return the time when the cart at the front of the shopping queue will depart that queue
+     * @return the time when the cart at the front of the shopping queue will depart that queue,
+     *         or Integer.MAX_VALUE if the shopping queue is empty
      */
     public int departTimeNext() {
         if (shopping.isEmpty()) {
@@ -68,4 +69,5 @@ public class Store implements LineOfItems {
         }
         return shopping.front().getArrivalTime();
     }
+
 }

@@ -5,16 +5,17 @@ import edu.ncsu.csc216.checkout_simulator.simulation.Log;
 
 /**
  * The CheckOutRegister class maintains information about a checkout register
- * located at a store.
+ * located in a Store. This includes its line, a Log to record processing information,
+ * and the time when all carts in line will finish processing.
  * @author Brian Morris
  */
 public class CheckoutRegister implements LineOfItems {
 
     /** The ShoppingCartQueue of carts waiting for or being processed at this register */
     private ShoppingCartQueue line;
-    /** The cart at the front of the line logs its information here during its actual checkout */
+    /** When a cart finishes checkout at this CheckoutRegister, its information is recorded here. */
     private Log log;
-    /** The next time when this register will be clear of all carts */
+    /** The next time when this CheckoutRegister will be clear of all carts in seconds */
     private int timeWhenAvailable;
 
     /**
@@ -39,8 +40,8 @@ public class CheckoutRegister implements LineOfItems {
 
     /**
      * Removes the front cart from the line, logging its information in the process.
-     * The removed Cart is returned.
-     * @return the removed Cart
+     * The removed cart is returned.
+     * @return the removed cart
      */
     @Override
     public Cart processNext() {
@@ -62,7 +63,8 @@ public class CheckoutRegister implements LineOfItems {
     /**
      * Returns when the cart at the front of the line will finish processing
      * and leave the simulation. If the line is empty, return Integer.MAX_VALUE.
-     * @return the time that the cart at the front of the line will finish processing
+     * @return the time that the cart at the front of the line will finish processing,
+     *         or Integer.MAX_VALUE if the line is empty
      */
     @Override
     public int departTimeNext() {
@@ -74,7 +76,7 @@ public class CheckoutRegister implements LineOfItems {
     }
 
     /**
-     * Adds a cart to the end of the line, updating the cart's waitTime as well as
+     * Adds a cart to the end of the line, updating the cart's wait time as well as
      * the time when the line will be clear of all carts currently in line.
      * @param cart the cart to be added to the end of the line
      */

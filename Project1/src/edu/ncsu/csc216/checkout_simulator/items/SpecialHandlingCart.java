@@ -7,7 +7,8 @@ import edu.ncsu.csc216.checkout_simulator.queues.CheckoutRegister;
 /**
  * The SpecialHandlingCart class is a Cart that is constructed with
  * elements unique to a SpecialHandlingCart such as: its color,
- * arrival time, and checkout time.
+ * arrival time, and checkout time. A SpecialHandlingCart always chooses
+ * the shortest line, as long as it's a SpecialHandlineCart line.
  * @author Brian Morris
  */
 public class SpecialHandlingCart extends Cart {
@@ -18,16 +19,16 @@ public class SpecialHandlingCart extends Cart {
     /**
      * The SpecialHandlingCart constructor creates a
      * SpecialHandlingCart with values for all fields.
-     * @param arrivalTime the arrival time of the SpecialHandlingCart
-     * @param checkoutTime the checkout time of the SpecialHandlingCart
+     * @param arrivalTime the arrival time of the SpecialHandlingCart in seconds
+     * @param checkoutTime the checkout time of the SpecialHandlingCart in seconds
      */
     public SpecialHandlingCart(int arrivalTime, int checkoutTime) {
         super(arrivalTime, checkoutTime);
     }
 
     /**
-     * The getInLine() method adds a SpecialHandlingCart to the back of the line for their chosen
-     * CheckoutRegister.
+     * The getInLine() method adds a SpecialHandlingCart to the back of the shortest line,
+     * as long as the line is a SpecialHandlingCart line.
      * @param registers an array of the checkout registers in a store
      */
     @Override
@@ -47,7 +48,7 @@ public class SpecialHandlingCart extends Cart {
     }
 
     /**
-     * The getColor method returns the color of the SpecialHandlingCart.
+     * Returns the color of the SpecialHandlingCart.
      * @return the color of the SpecialHandlingCart
      */
     @Override
