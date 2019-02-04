@@ -1,1 +1,1 @@
-# csc216-002-P1-11
+# Shopping Queue Simulator
